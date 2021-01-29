@@ -1,0 +1,79 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="User.Master.cs" Inherits="Machine_Problem.The_Kids_NUCLEUS_Master" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>The Kids NUCLEUS School of Laguna</title>
+
+    <!-- css files -->
+
+    <!-- boostrap -->
+    <link href="../libraries/boostrap/Content/bootstrap.min.css" rel="stylesheet" />
+    <!-- data tables -->
+    <link href="../libraries/datatables/jquery.dataTables.min.css" rel="stylesheet" />
+    <!-- fontawesome -->
+    <link href="../libraries/fontawesome/css/all.css" rel="stylesheet" />
+    <!-- custom css -->
+    <link href="../css/User_Master.css" rel="stylesheet" />
+
+    <!-- js files -->
+
+    <!-- jquery -->
+    <script src="../libraries/boostrap/Scripts/jquery-3.0.0.slim.min.js"></script>
+    <!-- popper js -->
+    <script src="../libraries/boostrap/Scripts/popper.min.js"></script>
+    <!-- boostrap js -->
+    <script src="../libraries/boostrap/Scripts/bootstrap.min.js"></script>
+    
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <!-- header banner -->
+        <div class="header-banner">
+            <asp:Image ID="imgHeader" runat="server" ImageUrl="~/assets/navbar/logo.png" CssClass="header-image"/>
+            <br />
+            <asp:Label ID="lblHeader" runat="server" Text="The Kids NUCLEUS School of Laguna"></asp:Label>
+        </div>
+    
+        <!-- navbar -->
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
+              <div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                  <div class="navbar-nav justify-content-center">
+                    <a class="nav-link" href="Home.aspx">Home</a>
+                    <a class="nav-link" href="#">About Us</a>
+                    <a class="nav-link" href="#">Admissions</a>
+                    <a class="nav-link" href="#">Enrollment</a>
+                    <a class="nav-link" href="#">Community</a>
+                    <a class="nav-link" href="#">School Calendar</a>
+                  </div>
+                </div>
+              </div>
+            </nav>
+        </div>
+
+        <!-- content -->
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <!-- footer -->
+        <div>
+            <footer>
+                <div class="footer-css">
+                    <asp:Label ID="lblFooter" runat="server" Text="@2020 The Kids NUCLEUS School of Laguna. All Rights Reserved."></asp:Label>
+                </div>
+            </footer>
+        </div>
+    </form>
+</body>
+</html>
