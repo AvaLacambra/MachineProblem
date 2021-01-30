@@ -27,6 +27,7 @@ namespace Machine_Problem.master
             {
                 SqlCommand retrieve = new SqlCommand(sqlretrieve, connection);
                 connection.Open();
+
                 try {
                     retrieve.CommandType = CommandType.Text;
                     retrieve.Parameters.AddWithValue("employeeID", Session["changePasswordEmployeeID"].ToString());
@@ -47,15 +48,15 @@ namespace Machine_Problem.master
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString))
             {
                 SqlCommand command = new SqlCommand(sqlCommand, connection);
-
                 connection.Open();
+
                 try {
                     command.CommandType = CommandType.Text;
                     command.Parameters.AddWithValue("employeeID", Session["changePasswordEmployeeID"].ToString());
                     command.Parameters.AddWithValue("password", txtNewPassword.Text);
                     command.ExecuteNonQuery();
 
-                    Session.Clear();
+                    Session["changePasswordEmployeeID"] = null;
                     ScriptManager.RegisterStartupScript(this, this.GetType(),
                         "redirect", "alert('Password Changed.'); window.location='" +
                         Request.ApplicationPath + "Admin/Employee/ViewEmployeeAccounts.aspx';", true);
@@ -68,6 +69,7 @@ namespace Machine_Problem.master
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
+            Session["changePasswordEmployeeID"] = null;
             Response.Redirect("ViewEmployeeAccounts.aspx");
         }
 

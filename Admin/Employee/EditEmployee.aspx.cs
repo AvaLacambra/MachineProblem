@@ -14,38 +14,46 @@ namespace Machine_Problem.master
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["editEmployeeID"] is null) {
-                Response.Redirect("ViewEmployees.aspx");
-            }
-                
-            string sqlretrieve = "SELECT firstName, lastName, middleI, email, Employee.roleID " +
-                "FROM Employee INNER JOIN Roles ON Employee.roleID = Roles.roleID " +
-                "WHERE employeeID = @employeeID;";
-
-            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString))
-            {
-                SqlCommand retrieve = new SqlCommand(sqlretrieve, connection);
-                    
-                connection.Open();
-                try {
-                    retrieve.CommandType = CommandType.Text;
-                    retrieve.Parameters.AddWithValue("employeeID", Session["editEmployeeID"].ToString());
-
-                    SqlDataReader reader = retrieve.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        txtFirstName.Text = reader["firstName"].ToString();
-                        txtLastName.Text = reader["lastName"].ToString();
-                        txtMiddleI.Text = reader["middleI"].ToString();
-                        txtEmail.Text = reader["email"].ToString();
-                        drpRole.SelectedValue = reader["roleID"].ToString();
-                    }
+            if (!IsPostBack) {
+                if (Session["editEmployeeID"] is null) {
+                    Response.Redirect("ViewEmployees.aspx");
                 }
-                catch {
-                        Response.Write("<script>alert('Employee Information cannot be retrived.')</script>");
+
+                string sqlretrieve = "SELECT firstName, lastName, middleI, email, Employee.roleID " +
+                    "FROM Employee INNER JOIN Roles ON Employee.roleID = Roles.roleID " +
+                    "WHERE employeeID = @employeeID;";
+
+                using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString))
+                {
+                    SqlCommand retrieve = new SqlCommand(sqlretrieve, connection);
+
+                    connection.Open();
+                    try
+                    {
+                        retrieve.CommandType = CommandType.Text;
+                        retrieve.Parameters.AddWithValue("employeeID", Session["editEmployeeID"].ToString());
+
+                        SqlDataReader reader = retrieve.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            txtFirstName.Text = reader["firstName"].ToString();
+                            txtLastName.Text = reader["lastName"].ToString();
+                            txtMiddleI.Text = reader["middleI"].ToString();
+                            txtEmail.Text = reader["email"].ToString();
+                            drpRole.SelectedValue = reader["roleID"].ToString();
+                        }
+                    }
+                    catch
+                    {
+                        Session.Clear();
+                        ScriptManager.RegisterStartupScript(this, this.GetType(),
+                            "redirect", "alert('Employee Information cannot be retrived.'); window.location='" +
+                            Request.ApplicationPath + "Admin/Employee/ViewEmployees.aspx';", true);
+                    }
                 }
             }
         }
+
         protected void btnEditEmployee_Click(object sender, EventArgs e)
         {
             string sqlCommand = "UPDATE Employee SET firstName = @firstName, lastName = @lastName, " +
@@ -67,7 +75,7 @@ namespace Machine_Problem.master
                     command.Parameters.AddWithValue("employeeID", Session["editEmployeeID"].ToString());
                     command.ExecuteNonQuery();
 
-                    Session.Clear();
+                    Session["editEmployeeID"] = null;
                     ScriptManager.RegisterStartupScript(this, this.GetType(),
                         "redirect", "alert('Employee Information has been edited.'); window.location='" +
                         Request.ApplicationPath + "Admin/Employee/ViewEmployees.aspx';", true);
@@ -80,6 +88,7 @@ namespace Machine_Problem.master
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
+            Session["editEmployeeID"] = null;
             Response.Redirect("ViewEmployees.aspx");
         }
 

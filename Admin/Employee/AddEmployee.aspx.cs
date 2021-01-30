@@ -20,6 +20,7 @@ namespace Machine_Problem.master
             {
                 SqlCommand command = new SqlCommand(sqlCommand, connection);
                 connection.Open();
+
                 try {
                     command.CommandType = CommandType.Text;
                     command.Parameters.AddWithValue("firstname", txtFirstName.Text);
