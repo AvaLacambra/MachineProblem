@@ -33,10 +33,10 @@ namespace Machine_Problem.master
                 {
                     Response.Write("<script>alert('Login successful.')</script>");
                     Session["username"] = txtUsername;
-                    Session["employeeID"] = reader["Employee.employeeID"].ToString();
+                    Session["employeeID"] = reader["employeeID"].ToString();
 
                     //placeholder until we have seperate pages for each role
-                    if (reader["roleID"].ToString() == "1") Response.Redirect("ADMIN");
+                    if (reader["roleID"].ToString() == "1") Response.Write("ADMIN");
                     else if (reader["roleID"].ToString() == "2") Response.Write("TEACHER");
                     else if (reader["roleID"].ToString() == "3") Response.Write("REGISTRAR");
                 }
