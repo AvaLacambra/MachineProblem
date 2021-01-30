@@ -59,7 +59,7 @@ namespace Machine_Problem.master
                     Session["changePasswordEmployeeID"] = null;
                     ScriptManager.RegisterStartupScript(this, this.GetType(),
                         "redirect", "alert('Password Changed.'); window.location='" +
-                        Request.ApplicationPath + "Admin/Employee/ViewEmployeeAccounts.aspx';", true);
+                        Request.ApplicationPath + "SuperAdmin/Employee/ViewEmployeeAccounts.aspx';", true);
                 }
                 catch {
                     Response.Write("<script>alert('Error in changing password.')</script>");

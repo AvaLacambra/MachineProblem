@@ -14,36 +14,38 @@ namespace Machine_Problem.master
     {
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            string sqlCommand = "SELECT roleID " +
+            string sqlCommand = "SELECT Employee.employeeID, roleID " +
                                 "FROM Employee INNER JOIN EmployeeAccounts " +
                                 "ON Employee.employeeID = EmployeeAccounts.employeeID " +
                                 "WHERE username = @username AND password = @password;";
 
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString)) 
             {
-                using (SqlCommand command = new SqlCommand(sqlCommand, connection))
+                SqlCommand command = new SqlCommand(sqlCommand, connection);
+
+                connection.Open();
+                command.CommandType = CommandType.Text;
+                command.Parameters.AddWithValue("username", txtUsername.Text);
+                command.Parameters.AddWithValue("password", txtPassword.Text);
+
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
                 {
-                    connection.Open();
-                    command.CommandType = CommandType.Text;
-                    command.Parameters.AddWithValue("username", txtUsername.Text);
-                    command.Parameters.AddWithValue("password", txtPassword.Text);
+                    Response.Write("<script>alert('Login successful.')</script>");
+                    Session["username"] = txtUsername;
+                    Session["employeeID"] = reader["Employee.employeeID"].ToString();
 
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        Response.Write("<script>alert('Login successful.')</script>");
-                        Session["username"] = txtUsername;
-
-                        //placeholder until we have seperate pages for each role
-                        if (reader["roleID"].ToString() == "1") Response.Redirect("Admin/Dashboard.aspx");
-                        else if (reader["roleID"].ToString() == "2") Response.Write("TEACHER");
-                        else if (reader["roleID"].ToString() == "3") Response.Write("REGISTRAR");
-                        else if (reader["roleID"].ToString() == "4") Response.Write("SUPERADMIN");
-                    }
-                    else Response.Write("<script>alert('Incorrect Username and Password.')</script>");
+                    //placeholder until we have seperate pages for each role
+                    if (reader["roleID"].ToString() == "1") Response.Redirect("ADMIN");
+                    else if (reader["roleID"].ToString() == "2") Response.Write("TEACHER");
+                    else if (reader["roleID"].ToString() == "3") Response.Write("REGISTRAR");
                 }
+                else if (txtUsername.Text == WebConfigurationManager.AppSettings["SuperAdminUser"] && txtPassword.Text == WebConfigurationManager.AppSettings["SuperAdminPass"]) 
+                {
+                    Response.Redirect("SuperAdmin/Dashboard.aspx");
+                }
+                else Response.Write("<script>alert('Incorrect Username and Password.')</script>");
             }
         }
-
     }
 }

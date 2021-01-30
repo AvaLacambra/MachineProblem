@@ -48,7 +48,7 @@ namespace Machine_Problem.master
                         Session.Clear();
                         ScriptManager.RegisterStartupScript(this, this.GetType(),
                             "redirect", "alert('Employee Information cannot be retrived.'); window.location='" +
-                            Request.ApplicationPath + "Admin/Employee/ViewEmployees.aspx';", true);
+                            Request.ApplicationPath + "SuperAdmin/Employee/ViewEmployees.aspx';", true);
                     }
                 }
             }
@@ -78,7 +78,7 @@ namespace Machine_Problem.master
                     Session["editEmployeeID"] = null;
                     ScriptManager.RegisterStartupScript(this, this.GetType(),
                         "redirect", "alert('Employee Information has been edited.'); window.location='" +
-                        Request.ApplicationPath + "Admin/Employee/ViewEmployees.aspx';", true);
+                        Request.ApplicationPath + "SuperAdmin/Employee/ViewEmployees.aspx';", true);
                 }
                 catch {
                     Response.Write("<script>alert('Employee Information cannot be retrived.')</script>");

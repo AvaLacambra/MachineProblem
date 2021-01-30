@@ -19,7 +19,7 @@ namespace Machine_Problem.master
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(),
                     "redirect", "alert('No Employees found to create a new account.'); window.location='" +
-                    Request.ApplicationPath + "Admin/Employee/ViewEmployeeAccounts.aspx';", true);
+                    Request.ApplicationPath + "SuperAdmin/Employee/ViewEmployeeAccounts.aspx';", true);
             }
         }
 
@@ -40,7 +40,7 @@ namespace Machine_Problem.master
 
                     ScriptManager.RegisterStartupScript(this, this.GetType(),
                         "redirect", "alert('New Employee Account Created.'); window.location='" +
-                        Request.ApplicationPath + "Admin/Employee/ViewEmployeeAccounts.aspx';", true);
+                        Request.ApplicationPath + "SuperAdmin/Employee/ViewEmployeeAccounts.aspx';", true);
                 }
                 catch {
                 Response.Write("<script>alert('Username entered is currently in use.')</script>");

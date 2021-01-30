@@ -32,7 +32,7 @@ namespace Machine_Problem.master
 
                     ScriptManager.RegisterStartupScript(this, this.GetType(),
                         "redirect", "alert('New Employee Added.'); window.location='" +
-                        Request.ApplicationPath + "Admin/Employee/ViewEmployees.aspx';", true);
+                        Request.ApplicationPath + "SuperAdmin/Employee/ViewEmployees.aspx';", true);
                 }
                 catch {
                     Response.Write("<script>alert('Email entered is currently in use.')</script>");

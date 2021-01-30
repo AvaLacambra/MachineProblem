@@ -1,0 +1,70 @@
+CREATE DATABASE TKNS;
+
+GO 
+
+USE TKNS;
+
+GO
+
+CREATE TABLE Roles (
+	roleID INT IDENTITY(1,1) PRIMARY KEY,
+	roleName NVARCHAR(30) NOT NULL,
+);
+
+CREATE TABLE Employee (
+	employeeID INT IDENTITY(1,1) PRIMARY KEY,
+	firstName NVARCHAR(50) NOT NULL,
+	lastName NVARCHAR(50) NOT NULL,
+	middleI NVARCHAR(1),
+	email NVARCHAR(50) NOT NULL UNIQUE,
+	dateEmployed date NOT NULL,
+	roleID INT NOT NULL,
+	CONSTRAINT FK_roleID FOREIGN KEY(roleID) REFERENCES Roles(roleID)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+);
+
+CREATE TABLE EmployeeAccounts (
+	accountID INT IDENTITY(1,1) PRIMARY KEY,
+	username NVARCHAR(50) NOT NULL UNIQUE,
+	password NVARCHAR(50) NOT NULL,
+	dateCreated date NOT NULL,
+	employeeID INT NOT NULL,
+	CONSTRAINT FK_employeeID FOREIGN KEY(employeeID) REFERENCES Employee(employeeID)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+);
+
+GO
+
+INSERT INTO Roles VALUES 
+('Admin'),
+('Teacher'),
+('Registrar');
+
+GO
+
+INSERT INTO Employee VALUES 
+('Patrick', 'Mediodia', 'V', 'mediodia.patrick@gmail.com', GETDATE(), 1),
+('Teacher', 'Mediodia', 'V', 'teachersample@gmail.com', GETDATE(), 2),
+('Registrar', 'Mediodia', 'V', 'registrarsample@gmail.com', GETDATE(), 3);
+
+GO
+
+INSERT INTO EmployeeAccounts VALUES
+('mediodiapatrick', 'password', GETDATE(), 1),
+('teachersample', 'password', GETDATE(), 2),
+('registrarsample', 'password', GETDATE(), 3);
+
+
+/* Login */
+SELECT Employee.employeeID, roleID FROM Employee INNER JOIN EmployeeAccounts ON Employee.employeeID = EmployeeAccounts.employeeID WHERE username = @username AND password = @password;
+
+/* Dropdown for employee account creation */
+SELECT 'Name : ' + lastName + ', '+ firstName + ' ' + middleI + ' | Role: ' + roleName, Employee.employeeID FROM ((Employee LEFT JOIN EmployeeAccounts ON Employee.employeeID = EmployeeAccounts.employeeID) INNER JOIN Roles ON Employee.roleID = Roles.roleID) WHERE username is NULL; 
+
+/* Select employee information for table */
+SELECT employeeID, firstName, lastname, middleI, email, dateEmployed, roleName FROM Employee INNER JOIN Roles ON Employee.roleID = Roles.roleID;
+
+/* Select employee accounts information for table */
+SELECT * FROM ((EmployeeAccounts LEFT JOIN  Employee ON EmployeeAccounts.employeeID = Employee.employeeID) INNER JOIN Roles ON Employee.roleID = Roles.roleID); 

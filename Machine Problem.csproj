@@ -1862,13 +1862,14 @@
     <Content Include="libraries\fontawesome\webfonts\fa-regular-400.svg" />
     <Content Include="libraries\fontawesome\webfonts\fa-solid-900.svg" />
     <Content Include="Login.aspx" />
-    <Content Include="Admin\Dashboard.aspx" />
-    <Content Include="Admin\Employee\AddEmployee.aspx" />
-    <Content Include="Admin\Employee\CreateEmployeeAccount.aspx" />
-    <Content Include="Admin\Employee\ViewEmployees.aspx" />
-    <Content Include="Admin\Employee\ViewEmployeeAccounts.aspx" />
-    <Content Include="Admin\Employee\ChangePassEmployeeAccount.aspx" />
-    <Content Include="Admin\Employee\EditEmployee.aspx" />
+    <Content Include="Machine Problem SQL Commands.txt" />
+    <Content Include="SuperAdmin\Dashboard.aspx" />
+    <Content Include="SuperAdmin\Employee\AddEmployee.aspx" />
+    <Content Include="SuperAdmin\Employee\CreateEmployeeAccount.aspx" />
+    <Content Include="SuperAdmin\Employee\ViewEmployees.aspx" />
+    <Content Include="SuperAdmin\Employee\ViewEmployeeAccounts.aspx" />
+    <Content Include="SuperAdmin\Employee\ChangePassEmployeeAccount.aspx" />
+    <Content Include="SuperAdmin\Employee\EditEmployee.aspx" />
     <Content Include="Web.config" />
     <Content Include="libraries\fontawesome\less\brands.less" />
     <Content Include="libraries\fontawesome\less\fontawesome.less" />
@@ -1924,7 +1925,6 @@
     <Content Include="libraries\fontawesome\webfonts\fa-solid-900.ttf" />
     <Content Include="libraries\fontawesome\webfonts\fa-solid-900.woff" />
     <Content Include="libraries\fontawesome\webfonts\fa-solid-900.woff2" />
-    <Content Include="Working Version.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="libraries\Clear.cs" />
@@ -1942,53 +1942,53 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Dashboard.aspx.cs">
+    <Compile Include="SuperAdmin\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Dashboard.aspx.designer.cs">
+    <Compile Include="SuperAdmin\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Employee\AddEmployee.aspx.cs">
+    <Compile Include="SuperAdmin\Employee\AddEmployee.aspx.cs">
       <DependentUpon>AddEmployee.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Employee\AddEmployee.aspx.designer.cs">
+    <Compile Include="SuperAdmin\Employee\AddEmployee.aspx.designer.cs">
       <DependentUpon>AddEmployee.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Employee\CreateEmployeeAccount.aspx.cs">
+    <Compile Include="SuperAdmin\Employee\CreateEmployeeAccount.aspx.cs">
       <DependentUpon>CreateEmployeeAccount.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Employee\CreateEmployeeAccount.aspx.designer.cs">
+    <Compile Include="SuperAdmin\Employee\CreateEmployeeAccount.aspx.designer.cs">
       <DependentUpon>CreateEmployeeAccount.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Employee\ViewEmployees.aspx.cs">
+    <Compile Include="SuperAdmin\Employee\ViewEmployees.aspx.cs">
       <DependentUpon>ViewEmployees.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Employee\ViewEmployees.aspx.designer.cs">
+    <Compile Include="SuperAdmin\Employee\ViewEmployees.aspx.designer.cs">
       <DependentUpon>ViewEmployees.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Employee\ViewEmployeeAccounts.aspx.cs">
+    <Compile Include="SuperAdmin\Employee\ViewEmployeeAccounts.aspx.cs">
       <DependentUpon>ViewEmployeeAccounts.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Employee\ViewEmployeeAccounts.aspx.designer.cs">
+    <Compile Include="SuperAdmin\Employee\ViewEmployeeAccounts.aspx.designer.cs">
       <DependentUpon>ViewEmployeeAccounts.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Employee\ChangePassEmployeeAccount.aspx.cs">
+    <Compile Include="SuperAdmin\Employee\ChangePassEmployeeAccount.aspx.cs">
       <DependentUpon>ChangePassEmployeeAccount.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Employee\ChangePassEmployeeAccount.aspx.designer.cs">
+    <Compile Include="SuperAdmin\Employee\ChangePassEmployeeAccount.aspx.designer.cs">
       <DependentUpon>ChangePassEmployeeAccount.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Employee\EditEmployee.aspx.cs">
+    <Compile Include="SuperAdmin\Employee\EditEmployee.aspx.cs">
       <DependentUpon>EditEmployee.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Employee\EditEmployee.aspx.designer.cs">
+    <Compile Include="SuperAdmin\Employee\EditEmployee.aspx.designer.cs">
       <DependentUpon>EditEmployee.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1998,13 +1998,6 @@
     </Compile>
     <Compile Include="master\User.Master.designer.cs">
       <DependentUpon>User.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Working Version.aspx.cs">
-      <DependentUpon>Working Version.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Working Version.aspx.designer.cs">
-      <DependentUpon>Working Version.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
