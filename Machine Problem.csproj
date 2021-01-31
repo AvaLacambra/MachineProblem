@@ -77,6 +77,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\Announcements\AddAnnouncements.aspx" />
     <Content Include="assets\dashboard\bootstrap\css\bootstrap.min.css" />
     <Content Include="assets\dashboard\bootstrap\js\bootstrap.min.js" />
     <Content Include="assets\dashboard\fonts\fa-brands-400.svg" />
@@ -1863,6 +1864,7 @@
     <Content Include="libraries\fontawesome\webfonts\fa-solid-900.svg" />
     <Content Include="Login.aspx" />
     <Content Include="Machine Problem SQL Commands.txt" />
+    <Content Include="Admin\Announcements\ViewAnnouncements.aspx" />
     <Content Include="SuperAdmin\Dashboard.aspx" />
     <Content Include="SuperAdmin\Employee\AddEmployee.aspx" />
     <Content Include="SuperAdmin\Employee\CreateEmployeeAccount.aspx" />
@@ -1870,6 +1872,7 @@
     <Content Include="SuperAdmin\Employee\ViewEmployeeAccounts.aspx" />
     <Content Include="SuperAdmin\Employee\ChangePassEmployeeAccount.aspx" />
     <Content Include="SuperAdmin\Employee\EditEmployee.aspx" />
+    <Content Include="TableStucture.txt" />
     <Content Include="Web.config" />
     <Content Include="libraries\fontawesome\less\brands.less" />
     <Content Include="libraries\fontawesome\less\fontawesome.less" />
@@ -1927,6 +1930,13 @@
     <Content Include="libraries\fontawesome\webfonts\fa-solid-900.woff2" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Announcements\AddAnnouncements.aspx.cs">
+      <DependentUpon>AddAnnouncements.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Announcements\AddAnnouncements.aspx.designer.cs">
+      <DependentUpon>AddAnnouncements.aspx</DependentUpon>
+    </Compile>
     <Compile Include="libraries\Clear.cs" />
     <Compile Include="master\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
@@ -1941,6 +1951,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Announcements\ViewAnnouncements.aspx.cs">
+      <DependentUpon>ViewAnnouncements.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Announcements\ViewAnnouncements.aspx.designer.cs">
+      <DependentUpon>ViewAnnouncements.aspx</DependentUpon>
     </Compile>
     <Compile Include="SuperAdmin\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
@@ -2036,7 +2053,9 @@
   <ItemGroup>
     <TypeScriptCompile Include="libraries\boostrap\Scripts\index.d.ts" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Admin\Announcements\Photos\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
