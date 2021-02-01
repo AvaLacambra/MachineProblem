@@ -9,12 +9,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container col-sm-9 col-md-9 col-lg-8 col-xl-6" style="margin-top:30px; margin-bottom:70px;">
         <div class="jumbotron">
-            <div class="text-center">
-                <strong>
-                <asp:Label ID="lblHeader" runat="server" Text="Add Employee" CssClass="auto-style1"></asp:Label>
-                </strong>
-                <hr />
+            <div class="row justify-content-center">
+                <h1>Edit Employee</h1>
             </div>
+            <hr />
            <div class="container-fluid">
                 <div class="form-group">
                     <asp:Label ID="Label1" runat="server" Text="First name : "></asp:Label>

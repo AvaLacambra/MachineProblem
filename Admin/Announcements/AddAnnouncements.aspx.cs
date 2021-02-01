@@ -90,5 +90,11 @@ namespace Machine_Problem.master
             }
             return new Photos { paths = paths, fileNames  = fileNames };
         }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ViewAnnouncements.aspx");
+        }
+
     }
 }

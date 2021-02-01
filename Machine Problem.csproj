@@ -1864,6 +1864,7 @@
     <Content Include="libraries\fontawesome\webfonts\fa-solid-900.svg" />
     <Content Include="Login.aspx" />
     <Content Include="Machine Problem SQL Commands.txt" />
+    <Content Include="Announcements.aspx" />
     <Content Include="Admin\Announcements\ViewAnnouncements.aspx" />
     <Content Include="SuperAdmin\Dashboard.aspx" />
     <Content Include="SuperAdmin\Employee\AddEmployee.aspx" />
@@ -1951,6 +1952,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Announcements.aspx.cs">
+      <DependentUpon>Announcements.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Announcements.aspx.designer.cs">
+      <DependentUpon>Announcements.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Announcements\ViewAnnouncements.aspx.cs">
       <DependentUpon>ViewAnnouncements.aspx</DependentUpon>

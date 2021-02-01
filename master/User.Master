@@ -48,7 +48,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                   <div class="navbar-nav justify-content-center">
-                    <a class="nav-link" href="Home.aspx">Home</a>
+                    <a class="nav-link" href="Announcements.aspx">Home</a>
                     <a class="nav-link" href="#">About Us</a>
                     <a class="nav-link" href="#">Admissions</a>
                     <a class="nav-link" href="#">Enrollment</a>

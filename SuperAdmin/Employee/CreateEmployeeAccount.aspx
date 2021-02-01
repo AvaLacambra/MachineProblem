@@ -9,12 +9,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container col-sm-10 col-md-9 col-lg-7 col-xl-5" style="margin-top:30px; margin-bottom:70px;">
         <div class="jumbotron">
-            <div class="text-center">
-                <strong>
-                <asp:Label ID="lblHeader" runat="server" Text="Create Employee Account" CssClass="auto-style1"></asp:Label>
-                </strong>
-                <hr />
+            <div class="row justify-content-center">
+                <h1>Create Employee Account</h1>
             </div>
+            <hr />
             <div class="form-group">
                 <asp:DropDownList ID="drpEmployeeID" runat="server" DataSourceID="employeeDropdown" DataTextField="Column1" DataValueField="employeeID" class ="form-control"></asp:DropDownList>
                 <asp:SqlDataSource ID="employeeDropdown" runat="server" 

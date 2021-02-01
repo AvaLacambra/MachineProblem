@@ -17,7 +17,6 @@
             $(".employeeAccountsView").DataTable();
         });
     </script>
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container" style="margin-top:30px; margin-bottom:70px;">
@@ -29,8 +28,8 @@
                 <hr />
                 <asp:Button ID="btnAddNewEmployeeAccount" runat="server" Text="Add Employee Account" OnClick="btnAddNewEmployeeAccount_Click" class="btn btn-primary"/>
             </div>
-            <div class="container-fluid">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="employeeID" DataSourceID="employeeAccounts" CssClass="employeeAccountsView" OnRowCommand="GridView1_OnRowCommand">
+            <div class="container table-responsive">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="employeeID" DataSourceID="employeeAccounts" CssClass="employeeAccountsView table table-hover" OnRowCommand="GridView1_OnRowCommand">
                     <Columns>
                         <asp:BoundField DataField="lastName" HeaderText="Last Name" SortExpression="lastName" />
                         <asp:BoundField DataField="firstName" HeaderText="First Name" SortExpression="firstName" />

@@ -29,8 +29,8 @@
                 <hr />
                 <asp:Button ID="btnAddNewEmployee" runat="server" Text="Add Employee" class="btn btn-primary" OnClick="btnAddNewEmployee_Click"/>
             </div>
-            <div class="container-fluid">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="employees" CssClass="employees" OnRowCommand="GridView1_OnRowCommand">
+            <div class="container table-responsive">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="employees" CssClass="employees table table-hover" OnRowCommand="GridView1_OnRowCommand">
                      <Columns>
                         <asp:BoundField DataField="firstName" HeaderText="First Name" SortExpression="firstName" />
                         <asp:BoundField DataField="lastname" HeaderText="Last Name" SortExpression="lastname" />
