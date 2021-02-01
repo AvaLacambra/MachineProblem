@@ -1866,6 +1866,7 @@
     <Content Include="Machine Problem SQL Commands.txt" />
     <Content Include="Announcements.aspx" />
     <Content Include="Admin\Announcements\ViewAnnouncements.aspx" />
+    <Content Include="Admin\Announcements\EditAnnouncement.aspx" />
     <Content Include="SuperAdmin\Dashboard.aspx" />
     <Content Include="SuperAdmin\Employee\AddEmployee.aspx" />
     <Content Include="SuperAdmin\Employee\CreateEmployeeAccount.aspx" />
@@ -1938,7 +1939,7 @@
     <Compile Include="Admin\Announcements\AddAnnouncements.aspx.designer.cs">
       <DependentUpon>AddAnnouncements.aspx</DependentUpon>
     </Compile>
-    <Compile Include="libraries\Clear.cs" />
+    <Compile Include="libraries\Code.cs" />
     <Compile Include="master\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1966,6 +1967,13 @@
     </Compile>
     <Compile Include="Admin\Announcements\ViewAnnouncements.aspx.designer.cs">
       <DependentUpon>ViewAnnouncements.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Announcements\EditAnnouncement.aspx.cs">
+      <DependentUpon>EditAnnouncement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Announcements\EditAnnouncement.aspx.designer.cs">
+      <DependentUpon>EditAnnouncement.aspx</DependentUpon>
     </Compile>
     <Compile Include="SuperAdmin\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>

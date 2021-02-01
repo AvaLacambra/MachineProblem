@@ -32,8 +32,8 @@ namespace Machine_Problem.master
         {
             if (e.CommandName == "EditAnnouncement")
             {
-                //Session["changePasswordEmployeeID"] = Convert.ToInt32(e.CommandArgument);
-                //Response.Redirect("ChangePassEmployeeAccount.aspx");
+                Session["EditAnnounceID"] = Convert.ToInt32(e.CommandArgument);
+                Response.Redirect("EditAnnouncement.aspx");
             }
             else if (e.CommandName == "DeleteAnnouncement")
             {
@@ -54,7 +54,9 @@ namespace Machine_Problem.master
                     while(reader.Read())
                     {
                         string imageFilePath = Server.MapPath($@"{reader["photoPath"].ToString()}");
-                        File.Delete("imageFilePath");
+                        if (File.Exists(imageFilePath)) {
+                            File.Delete(imageFilePath);
+                        }
                     }
                     reader.Close();
 

@@ -14,42 +14,41 @@ namespace Machine_Problem.master
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) {
-                if (Session["editEmployeeID"] is null) {
-                    Response.Redirect("ViewEmployees.aspx");
-                }
+            if (!IsPostBack) 
+            {
+                if (Session["editEmployeeID"] is null)Response.Redirect("ViewEmployees.aspx");
+            }
 
-                string sqlretrieve = "SELECT firstName, lastName, middleI, email, Employee.roleID " +
-                    "FROM Employee INNER JOIN Roles ON Employee.roleID = Roles.roleID " +
-                    "WHERE employeeID = @employeeID;";
+            string sqlretrieve = "SELECT firstName, lastName, middleI, email, Employee.roleID " +
+                "FROM Employee INNER JOIN Roles ON Employee.roleID = Roles.roleID " +
+                "WHERE employeeID = @employeeID;";
 
-                using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString))
+            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString))
+            {
+                SqlCommand retrieve = new SqlCommand(sqlretrieve, connection);
+
+                connection.Open();
+                try
                 {
-                    SqlCommand retrieve = new SqlCommand(sqlretrieve, connection);
+                    retrieve.CommandType = CommandType.Text;
+                    retrieve.Parameters.AddWithValue("employeeID", Session["editEmployeeID"].ToString());
 
-                    connection.Open();
-                    try
+                    SqlDataReader reader = retrieve.ExecuteReader();
+                    if (reader.Read())
                     {
-                        retrieve.CommandType = CommandType.Text;
-                        retrieve.Parameters.AddWithValue("employeeID", Session["editEmployeeID"].ToString());
-
-                        SqlDataReader reader = retrieve.ExecuteReader();
-                        if (reader.Read())
-                        {
-                            txtFirstName.Text = reader["firstName"].ToString();
-                            txtLastName.Text = reader["lastName"].ToString();
-                            txtMiddleI.Text = reader["middleI"].ToString();
-                            txtEmail.Text = reader["email"].ToString();
-                            drpRole.SelectedValue = reader["roleID"].ToString();
-                        }
+                        txtFirstName.Text = reader["firstName"].ToString();
+                        txtLastName.Text = reader["lastName"].ToString();
+                        txtMiddleI.Text = reader["middleI"].ToString();
+                        txtEmail.Text = reader["email"].ToString();
+                        drpRole.SelectedValue = reader["roleID"].ToString();
                     }
-                    catch
-                    {
-                        Session.Clear();
-                        ScriptManager.RegisterStartupScript(this, this.GetType(),
-                            "redirect", "alert('Employee Information cannot be retrived.'); window.location='" +
-                            Request.ApplicationPath + "SuperAdmin/Employee/ViewEmployees.aspx';", true);
-                    }
+                }
+                catch
+                {
+                    Session.Clear();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(),
+                        "redirect", "alert('Employee Information cannot be retrived.'); window.location='" +
+                        Request.ApplicationPath + "SuperAdmin/Employee/ViewEmployees.aspx';", true);
                 }
             }
         }
