@@ -24,33 +24,33 @@ namespace Machine_Problem.master
             if (!IsPostBack)
             {
                 if (Session["EditAnnounceID"] is null) Response.Redirect("ViewEmployees.aspx");
-            }
+            
+                string sqlretrieve = "SELECT announceTitle,announceText FROM Announcements WHERE announceID = @announceID;";
 
-            string sqlretrieve = "SELECT announceTitle,announceText FROM Announcements WHERE announceID = @announceID;";
-
-            using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString))
-            {
-                SqlCommand retrieve = new SqlCommand(sqlretrieve, connection);
-
-                connection.Open();
-                try
+                using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString))
                 {
-                    retrieve.CommandType = CommandType.Text;
-                    retrieve.Parameters.AddWithValue("announceID", Session["EditAnnounceID"].ToString());
+                    SqlCommand retrieve = new SqlCommand(sqlretrieve, connection);
 
-                    SqlDataReader reader = retrieve.ExecuteReader();
-                    if (reader.Read())
+                    connection.Open();
+                    try
                     {
-                        txtAnnounceTitle.Text = reader["announceTitle"].ToString();
-                        txtAnnounceText.Text = reader["announceText"].ToString();
+                        retrieve.CommandType = CommandType.Text;
+                        retrieve.Parameters.AddWithValue("announceID", Session["EditAnnounceID"].ToString());
+
+                        SqlDataReader reader = retrieve.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            txtAnnounceTitleEdit.Text = reader["announceTitle"].ToString();
+                            txtAnnounceTextEdit.Text = reader["announceText"].ToString();
+                        }
                     }
-                }
-                catch
-                {
-                    Session.Clear();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(),
-                        "redirect", "alert('Announcement Information cannot be retrived.'); window.location='" +
-                        Request.ApplicationPath + "Admin/Announcements/ViewAnnouncements.aspx';", true);
+                    catch
+                    {
+                        Session.Clear();
+                        ScriptManager.RegisterStartupScript(this, this.GetType(),
+                            "redirect", "alert('Announcement Information cannot be retrived.'); window.location='" +
+                            Request.ApplicationPath + "Admin/Announcements/ViewAnnouncements.aspx';", true);
+                    }
                 }
             }
         }
@@ -79,10 +79,13 @@ namespace Machine_Problem.master
                 connection.Open();
 
                 command.CommandType = CommandType.Text;
-                command.Parameters.AddWithValue("announceTitle", txtAnnounceTitle.Text);
-                command.Parameters.AddWithValue("announceText", txtAnnounceText.Text);
+                command.Parameters.AddWithValue("announceTitle", txtAnnounceTitleEdit.Text);
+                command.Parameters.AddWithValue("announceText", txtAnnounceTextEdit.Text);
                 command.Parameters.AddWithValue("announceID", Session["EditAnnounceID"].ToString());
-                command.ExecuteNonQuery();
+
+                bool result = false;
+                if (command.ExecuteNonQuery() > 0) result = true;
+                Response.Write(result);
 
                 return Session["EditAnnounceID"].ToString();
             }

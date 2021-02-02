@@ -24,13 +24,13 @@ namespace Machine_Problem.master
         protected global::System.Web.UI.WebControls.Label lblAnnounceTitle;
 
         /// <summary>
-        /// txtAnnounceTitle control.
+        /// txtAnnounceTitleEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAnnounceTitle;
+        protected global::System.Web.UI.WebControls.TextBox txtAnnounceTitleEdit;
 
         /// <summary>
         /// rfvTitle control.
@@ -51,13 +51,13 @@ namespace Machine_Problem.master
         protected global::System.Web.UI.WebControls.Label lblAnnounceText;
 
         /// <summary>
-        /// txtAnnounceText control.
+        /// txtAnnounceTextEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAnnounceText;
+        protected global::System.Web.UI.WebControls.TextBox txtAnnounceTextEdit;
 
         /// <summary>
         /// rfvText control.

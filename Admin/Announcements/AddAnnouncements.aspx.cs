@@ -21,12 +21,14 @@ namespace Machine_Problem.master
         protected void btnAddEmployee_Click(object sender, EventArgs e)
         {
             insertPhotos(insertAnnouncement());
+            ScriptManager.RegisterStartupScript(this, this.GetType(),
+                "redirect", "alert('New Announcement Posted.'); window.location='" +
+                Request.ApplicationPath + "Admin/Announcements/ViewAnnouncements.aspx';", true);
         }
 
         protected int insertAnnouncement()
         {
             string sqlCommand = "INSERT INTO Announcements VALUES (@announceTitle , @announceText , GETDATE());";
-            string sqlRetrieve = "SELECT MAX(announceID) FROM Announcements;";
 
             using (SqlConnection connection = new SqlConnection(System.Web.Configuration.WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString))
             {
@@ -38,9 +40,11 @@ namespace Machine_Problem.master
                 command.Parameters.AddWithValue("announceText", txtAnnounceText.Text);
                 command.ExecuteNonQuery();
 
-                SqlCommand retrieve = new SqlCommand(sqlRetrieve, connection);
+                command.Parameters.Clear();
+                command.CommandText = "SELECT @@IDENTITY";
+                int announceID = Convert.ToInt32(command.ExecuteScalar());
 
-                return (Int32)retrieve.ExecuteScalar();
+                return announceID;
             }
         }
 
