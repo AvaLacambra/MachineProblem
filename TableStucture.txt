@@ -122,3 +122,20 @@ CREATE TABLE AnnouncementPhotos (
 	ON UPDATE CASCADE
 );
 
+CREATE TABLE FeaturedWorks (
+	featuredWorkID INT IDENTITY (1,1) PRIMARY KEY,
+	featuredTitle NVARCHAR(150) NOT NULL,
+	featuredDesc NVARCHAR(4000) NOT NULL,
+	featuredDatePosted DATE NOT NULL,
+
+);
+
+CREATE TABLE FeaturedWorkPhotos (
+	photoID INT IDENTITY (1,1) PRIMARY KEY,
+	featuredWorkID INT NOT NULL,
+	photoName NVARCHAR(128) NOT NULL,
+	photoPath NVARCHAR(256) NOT NULL,
+	CONSTRAINT FK_featuredWorkID FOREIGN KEY(featuredWorkID) REFERENCES FeaturedWorks(featuredWorkID) 
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+);

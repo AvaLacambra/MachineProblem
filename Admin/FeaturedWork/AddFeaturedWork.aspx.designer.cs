@@ -11,26 +11,26 @@ namespace Machine_Problem.master
 {
 
 
-    public partial class WebForm9
+    public partial class WebForm13
     {
 
         /// <summary>
-        /// lblAnnounceTitle control.
+        /// lblFeaturedTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAnnounceTitle;
+        protected global::System.Web.UI.WebControls.Label lblFeaturedTitle;
 
         /// <summary>
-        /// txtAnnounceTitle control.
+        /// txtFeaturedTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAnnounceTitle;
+        protected global::System.Web.UI.WebControls.TextBox txtFeaturedTitle;
 
         /// <summary>
         /// rfvTitle control.
@@ -42,22 +42,22 @@ namespace Machine_Problem.master
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTitle;
 
         /// <summary>
-        /// lblAnnounceText control.
+        /// lblFeaturedDesc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAnnounceText;
+        protected global::System.Web.UI.WebControls.Label lblFeaturedDesc;
 
         /// <summary>
-        /// txtAnnounceText control.
+        /// txtFeaturedDesc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAnnounceText;
+        protected global::System.Web.UI.WebControls.TextBox txtFeaturedDesc;
 
         /// <summary>
         /// rfvText control.
@@ -78,13 +78,13 @@ namespace Machine_Problem.master
         protected global::System.Web.UI.WebControls.FileUpload filePhoto;
 
         /// <summary>
-        /// btnAddAnnouncement control.
+        /// btnAddFeaturedWork control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddAnnouncement;
+        protected global::System.Web.UI.WebControls.Button btnAddFeaturedWork;
 
         /// <summary>
         /// btnBack control.

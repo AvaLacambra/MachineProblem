@@ -30,7 +30,7 @@
     </asp:ContentPlaceHolder>
 
 </head>
-<body>
+<body onkeydown = "return (event.keyCode!=13)">
     <form id="form1" runat="server">
         <!-- header banner -->
         <div class="header-banner">

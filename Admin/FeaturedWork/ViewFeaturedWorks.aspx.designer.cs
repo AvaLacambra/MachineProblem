@@ -11,26 +11,26 @@ namespace Machine_Problem.master
 {
 
 
-    public partial class WebForm11
+    public partial class WebForm14
     {
 
         /// <summary>
-        /// announcementsView control.
+        /// featuredWorksHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label announcementsView;
+        protected global::System.Web.UI.WebControls.Label featuredWorksHeader;
 
         /// <summary>
-        /// btnAddAnnouncement control.
+        /// btnAddFeaturedWork control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddAnnouncement;
+        protected global::System.Web.UI.WebControls.Button btnAddFeaturedWork;
 
         /// <summary>
         /// GridView1 control.
@@ -42,12 +42,12 @@ namespace Machine_Problem.master
         protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
-        /// announcements control.
+        /// featuredWorks control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource announcements;
+        protected global::System.Web.UI.WebControls.SqlDataSource featuredWorks;
     }
 }

@@ -1867,6 +1867,10 @@
     <Content Include="Announcements.aspx" />
     <Content Include="Admin\Announcements\ViewAnnouncements.aspx" />
     <Content Include="Admin\Announcements\EditAnnouncement.aspx" />
+    <Content Include="Admin\FeaturedWork\AddFeaturedWork.aspx" />
+    <Content Include="Admin\FeaturedWork\ViewFeaturedWorks.aspx" />
+    <Content Include="Admin\FeaturedWork\EditFeaturedWork.aspx" />
+    <Content Include="FeaturedWorks.aspx" />
     <Content Include="SuperAdmin\Dashboard.aspx" />
     <Content Include="SuperAdmin\Employee\AddEmployee.aspx" />
     <Content Include="SuperAdmin\Employee\CreateEmployeeAccount.aspx" />
@@ -1975,6 +1979,34 @@
     <Compile Include="Admin\Announcements\EditAnnouncement.aspx.designer.cs">
       <DependentUpon>EditAnnouncement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\FeaturedWork\AddFeaturedWork.aspx.cs">
+      <DependentUpon>AddFeaturedWork.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\FeaturedWork\AddFeaturedWork.aspx.designer.cs">
+      <DependentUpon>AddFeaturedWork.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\FeaturedWork\ViewFeaturedWorks.aspx.cs">
+      <DependentUpon>ViewFeaturedWorks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\FeaturedWork\ViewFeaturedWorks.aspx.designer.cs">
+      <DependentUpon>ViewFeaturedWorks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\FeaturedWork\EditFeaturedWork.aspx.cs">
+      <DependentUpon>EditFeaturedWork.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\FeaturedWork\EditFeaturedWork.aspx.designer.cs">
+      <DependentUpon>EditFeaturedWork.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FeaturedWorks.aspx.cs">
+      <DependentUpon>FeaturedWorks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FeaturedWorks.aspx.designer.cs">
+      <DependentUpon>FeaturedWorks.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SuperAdmin\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2071,6 +2103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admin\Announcements\Photos\" />
+    <Folder Include="Admin\FeaturedWork\Photos\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

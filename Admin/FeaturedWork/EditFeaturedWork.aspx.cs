@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace Machine_Problem.master
 {
-    public partial class WebForm12 : System.Web.UI.Page
+    public partial class WebForm15 : System.Web.UI.Page
     {
         public class Photos
         {
@@ -23,9 +23,9 @@ namespace Machine_Problem.master
         {
             if (!IsPostBack)
             {
-                if (Session["EditAnnounceID"] is null) Response.Redirect("ViewEmployees.aspx");
-            
-                string sqlretrieve = "SELECT announceTitle,announceText FROM Announcements WHERE announceID = @announceID;";
+                if (Session["featuredWorkID"] is null) Response.Redirect("ViewFeaturedWorks.aspx");
+
+                string sqlretrieve = "SELECT featuredTitle,featuredDesc FROM FeaturedWorks WHERE featuredWorkID = @featuredWorkID;";
 
                 using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString))
                 {
@@ -35,43 +35,45 @@ namespace Machine_Problem.master
                     try
                     {
                         retrieve.CommandType = CommandType.Text;
-                        retrieve.Parameters.AddWithValue("announceID", Session["EditAnnounceID"].ToString());
+                        retrieve.Parameters.AddWithValue("featuredWorkID", Session["featuredWorkID"].ToString());
 
                         SqlDataReader reader = retrieve.ExecuteReader();
                         if (reader.Read())
                         {
-                            txtAnnounceTitleEdit.Text = reader["announceTitle"].ToString();
-                            txtAnnounceTextEdit.Text = reader["announceText"].ToString();
+                            txtFeaturedTitle.Text = reader["featuredTitle"].ToString();
+                            txtFeaturedDesc.Text = reader["featuredDesc"].ToString();
                         }
                     }
                     catch
                     {
                         Session.Clear();
                         ScriptManager.RegisterStartupScript(this, this.GetType(),
-                            "redirect", "alert('Announcement Information cannot be retrived.'); window.location='" +
-                            Request.ApplicationPath + "Admin/Announcements/ViewAnnouncements.aspx';", true);
+                            "redirect", "alert('Featured Works Information cannot be retrived.'); window.location='" +
+                            Request.ApplicationPath + "Admin/FeaturedWorks/ViewFeaturedWorks.aspx';", true);
                     }
                 }
             }
         }
 
-        protected void btnEditAnnouncement_Click(object sender, EventArgs e)
+        protected void btnEditFeaturedWork_Click(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 insertPhotos(updateAnnouncement());
-                Session["EditAnnounceID"] = null;
+                Session["featuredWorkID"] = null;
                 ScriptManager.RegisterStartupScript(this, this.GetType(),
-                    "redirect", "alert('Updated Announcement'); window.location='" +
-                    Request.ApplicationPath + "Admin/Announcements/ViewAnnouncements.aspx';", true);
+                    "redirect", "alert('Updated Featured Work.'); window.location='" +
+                    Request.ApplicationPath + "Admin/FeaturedWork/ViewFeaturedWorks.aspx';", true);
             }
-            catch {
+            catch
+            {
 
             }
         }
 
         protected string updateAnnouncement()
         {
-            string sqlCommand = "UPDATE Announcements SET announceTitle = @announceTitle, announceText = @announceText WHERE announceID = @announceID;";
+            string sqlCommand = "UPDATE FeaturedWorks SET featuredTitle = @featuredTitle, featuredDesc = @featuredDesc WHERE featuredWorkID = @featuredWorkID;";
 
             using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString))
             {
@@ -79,21 +81,25 @@ namespace Machine_Problem.master
                 connection.Open();
 
                 command.CommandType = CommandType.Text;
-                command.Parameters.AddWithValue("announceTitle", txtAnnounceTitleEdit.Text);
-                command.Parameters.AddWithValue("announceText", txtAnnounceTextEdit.Text);
-                command.Parameters.AddWithValue("announceID", Session["EditAnnounceID"].ToString());
+                command.Parameters.AddWithValue("featuredTitle", txtFeaturedTitle.Text);
+                command.Parameters.AddWithValue("featuredDesc", txtFeaturedDesc.Text);
+                command.Parameters.AddWithValue("featuredWorkID", Session["featuredWorkID"].ToString());
 
-                return Session["EditAnnounceID"].ToString();
+                bool result = false;
+                if (command.ExecuteNonQuery() > 0) result = true;
+                Response.Write(result);
+
+                return Session["featuredWorkID"].ToString();
             }
         }
 
-        protected void insertPhotos(string announceID)
+        protected void insertPhotos(string featuredWorkID)
         {
             Photos photos = getPhotos();
 
             if (photos.paths.Count > 0)
             {
-                string sqlCommand = "INSERT INTO AnnouncementPhotos VALUES (@announceID, @photoName, @photoPath);";
+                string sqlCommand = "INSERT INTO FeaturedWorkPhotos VALUES (@featuredWorkID, @photoName, @photoPath);";
 
                 using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString))
                 {
@@ -104,7 +110,7 @@ namespace Machine_Problem.master
                         SqlCommand command = new SqlCommand(sqlCommand, connection);
 
                         command.CommandType = CommandType.Text;
-                        command.Parameters.AddWithValue("announceID", announceID);
+                        command.Parameters.AddWithValue("featuredWorkID", featuredWorkID);
                         command.Parameters.AddWithValue("photoName", photos.fileNames[i]);
                         command.Parameters.AddWithValue("photoPath", photos.paths[i]);
                         command.ExecuteNonQuery();
@@ -135,18 +141,12 @@ namespace Machine_Problem.master
             return new Photos { paths = paths, fileNames = fileNames };
         }
 
-        protected void btnBack_Click(object sender, EventArgs e)
-        {
-            Session["EditAnnounceID"] = null;
-            Response.Redirect("ViewAnnouncements.aspx");
-        }
-
         protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             if (e.CommandName == "deletePhoto")
             {
-                string sqlRetrieve = "SELECT photoPath FROM AnnouncementPhotos WHERE photoID = @photoID;";
-                string sqlCommand = "DELETE FROM AnnouncementPhotos WHERE photoID = @photoID;";
+                string sqlRetrieve = "SELECT photoPath FROM FeaturedWorkPhotos WHERE photoID = @photoID;";
+                string sqlCommand = "DELETE FROM FeaturedWorkPhotos WHERE photoID = @photoID;";
 
                 using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString))
                 {
@@ -182,5 +182,9 @@ namespace Machine_Problem.master
             }
         }
 
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ViewFeaturedWorks.aspx");
+        }
     }
 }

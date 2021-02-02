@@ -1,5 +1,10 @@
 ﻿    <%@ Page Title="" Language="C#" MasterPageFile="master/User.Master" AutoEventWireup="true" CodeBehind="Announcements.aspx.cs" Inherits="Machine_Problem.master.WebForm10" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+      <style>
+        pre {
+            white-space: pre-wrap;
+        }
+      </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container col-sm-9 col-md-9 col-lg-8 col-xl-6" style="margin-top:30px; margin-bottom:70px;">
@@ -8,10 +13,7 @@
         </div>
         <hr />
         <% for (int i=0; i < announcements.announceID.Count; i++) { %>
-            <div class="jumbotron">
-                <h3 style="text-align:center"><%= announcements.announceTitle[i] %></h3>
-                <small>Date Posted : <%= String.Format("{0:dd/MM/yyyy}", announcements.announceDatePosted[i]) %></small>
-                <hr />
+            <div class="card">
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <% int photoCounter = 0; %>
@@ -41,8 +43,18 @@
                     </a>
                     <% } %> 
                 </div>
-                <div class="=container col-11">
-                    <p style="text-align:justify"><%= announcements.announceText[i] %></p>
+                <hr />
+                <div class="row justify-content-center">
+                    <h2 class="card-title mt-2 ml-2"><%= announcements.announceTitle[i] %></h2>
+                </div>
+                <div class="row justify-content-center">
+                    <small class=" mt-2 ml-2">Date Posted : <%= String.Format("{0:dd/MM/yyyy}", announcements.announceDatePosted[i]) %></small>
+                </div>
+                <hr />
+                <div class="container">
+                    <div class="col-10" style="float:none;margin:auto;">
+                        <pre style="text-align:justify"><%= announcements.announceText[i] %></pre>
+                    </div>
                 </div>
             </div>
         <% } %>

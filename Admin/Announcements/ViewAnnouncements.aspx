@@ -23,7 +23,7 @@
         <div class ="jumbotron">
             <div class="text-center">
                 <strong>
-                <asp:Label ID="employeeAccountsView" runat="server" Text="View Announcements" CssClass="auto-style1"></asp:Label>
+                <asp:Label ID="announcementsView" runat="server" Text="View Announcements" CssClass="auto-style1"></asp:Label>
                 </strong>
                 <hr />
                 <asp:Button ID="btnAddAnnouncement" runat="server" Text="Add Announcement" class="btn btn-primary" OnClick="btnAddAnnouncement_Click"/>
