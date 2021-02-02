@@ -129,8 +129,9 @@ namespace Machine_Problem.master
                     if (postedFile.ContentType.Contains("image"))
                     {
                         string fileName = Path.GetFileName(postedFile.FileName);
-                        postedFile.SaveAs(Server.MapPath("Photos/") + fileName);
-                        paths.Add("Photos/" + fileName);
+                        Guid g = Guid.NewGuid();
+                        postedFile.SaveAs(Server.MapPath("Photos/") + g + fileName);
+                        paths.Add("Photos/" + g + fileName);
                         fileNames.Add(fileName);
                     }
                 }

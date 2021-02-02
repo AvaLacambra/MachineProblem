@@ -107,8 +107,8 @@ CREATE TABLE StudentImmunization (
 
 CREATE TABLE Announcements (
 	announceID INT IDENTITY (1,1) PRIMARY KEY,
-	announceTitle NVARCHAR(128) NOT NULL,
-	announceText NVARCHAR(1024) NOT NULL,
+	announceTitle NVARCHAR(150) NOT NULL,
+	announceText NVARCHAR(4000) NOT NULL,
 	announceDatePosted DATE NOT NULL,
 );
 
@@ -116,7 +116,7 @@ CREATE TABLE AnnouncementPhotos (
 	photoID INT IDENTITY (1,1) PRIMARY KEY,
 	announceID INT NOT NULL,
 	photoName NVARCHAR(128) NOT NULL,
-	photoPath NVARCHAR(128) NOT NULL,
+	photoPath NVARCHAR(256) NOT NULL,
 	CONSTRAINT FK_announceID FOREIGN KEY(announceID) REFERENCES Announcements(announceID)
 	ON DELETE CASCADE
 	ON UPDATE CASCADE
