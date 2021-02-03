@@ -92,53 +92,6 @@
     <Content Include="assets\dashboard\js\script.min.js" />
     <Content Include="assets\home\amenities.jpg" />
     <Content Include="assets\navbar\logo.png" />
-    <Content Include="bin\EntityFramework.dll" />
-    <Content Include="bin\EntityFramework.SqlServer.dll" />
-    <Content Include="bin\EntityFramework.SqlServer.xml" />
-    <Content Include="bin\EntityFramework.xml" />
-    <Content Include="bin\Machine Problem.dll" />
-    <Content Include="bin\Machine Problem.pdb" />
-    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
-    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
-    <Content Include="bin\roslyn\csc.exe" />
-    <Content Include="bin\roslyn\csi.exe" />
-    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
-    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
-    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
-    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
-    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll" />
-    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
-    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll" />
-    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll" />
-    <Content Include="bin\roslyn\Microsoft.Win32.Primitives.dll" />
-    <Content Include="bin\roslyn\System.AppContext.dll" />
-    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
-    <Content Include="bin\roslyn\System.Console.dll" />
-    <Content Include="bin\roslyn\System.Diagnostics.DiagnosticSource.dll" />
-    <Content Include="bin\roslyn\System.Diagnostics.FileVersionInfo.dll" />
-    <Content Include="bin\roslyn\System.Diagnostics.StackTrace.dll" />
-    <Content Include="bin\roslyn\System.Globalization.Calendars.dll" />
-    <Content Include="bin\roslyn\System.IO.Compression.dll" />
-    <Content Include="bin\roslyn\System.IO.Compression.ZipFile.dll" />
-    <Content Include="bin\roslyn\System.IO.FileSystem.dll" />
-    <Content Include="bin\roslyn\System.IO.FileSystem.Primitives.dll" />
-    <Content Include="bin\roslyn\System.Net.Http.dll" />
-    <Content Include="bin\roslyn\System.Net.Sockets.dll" />
-    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
-    <Content Include="bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll" />
-    <Content Include="bin\roslyn\System.Security.Cryptography.Algorithms.dll" />
-    <Content Include="bin\roslyn\System.Security.Cryptography.Encoding.dll" />
-    <Content Include="bin\roslyn\System.Security.Cryptography.Primitives.dll" />
-    <Content Include="bin\roslyn\System.Security.Cryptography.X509Certificates.dll" />
-    <Content Include="bin\roslyn\System.Text.Encoding.CodePages.dll" />
-    <Content Include="bin\roslyn\System.Threading.Tasks.Extensions.dll" />
-    <Content Include="bin\roslyn\System.ValueTuple.dll" />
-    <Content Include="bin\roslyn\System.Xml.ReaderWriter.dll" />
-    <Content Include="bin\roslyn\System.Xml.XmlDocument.dll" />
-    <Content Include="bin\roslyn\System.Xml.XPath.dll" />
-    <Content Include="bin\roslyn\System.Xml.XPath.XDocument.dll" />
-    <Content Include="bin\roslyn\vbc.exe" />
-    <Content Include="bin\roslyn\VBCSCompiler.exe" />
     <Content Include="js\chart.min.js" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\script.min.js" />
@@ -1922,12 +1875,6 @@
     <Content Include="Admin\NewsEvents\ViewNewsEvents.aspx" />
     <Content Include="Admin\NewsEvents\EditNewsEvents.aspx" />
     <Content Include="NewsEvents.aspx" />
-    <Content Include="obj\Debug\Machine Problem.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\Machine Problem.dll" />
-    <Content Include="obj\Debug\Machine Problem.pdb" />
-    <Content Include="obj\Debug\TempPE\Model1.Context.cs.dll" />
-    <Content Include="obj\Debug\TempPE\Model1.cs.dll" />
-    <Content Include="obj\Debug\TempPE\Model1.Designer.cs.dll" />
     <Content Include="SuperAdmin\Dashboard.aspx" />
     <Content Include="SuperAdmin\Employee\AddEmployee.aspx" />
     <Content Include="SuperAdmin\Employee\CreateEmployeeAccount.aspx" />
@@ -2092,8 +2039,6 @@
     <Compile Include="NewsEvents.aspx.designer.cs">
       <DependentUpon>NewsEvents.aspx</DependentUpon>
     </Compile>
-    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
-    <Compile Include="obj\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="SuperAdmin\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2171,24 +2116,7 @@
     <Content Include="assets\dashboard\fonts\fontawesome-webfont.woff" />
     <Content Include="assets\dashboard\fonts\fontawesome-webfont.woff2" />
     <Content Include="assets\dashboard\fonts\FontAwesome.otf" />
-    <Content Include="bin\Machine Problem.dll.config" />
-    <Content Include="bin\roslyn\csc.exe.config" />
-    <Content Include="bin\roslyn\csc.rsp" />
-    <Content Include="bin\roslyn\csi.exe.config" />
-    <Content Include="bin\roslyn\csi.rsp" />
-    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
-    <Content Include="bin\roslyn\Microsoft.Managed.Core.targets" />
-    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
-    <Content Include="bin\roslyn\vbc.exe.config" />
-    <Content Include="bin\roslyn\vbc.rsp" />
-    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <None Include="libraries\boostrap\Scripts\jquery-3.0.0-vsdoc.js" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="obj\Debug\Machine Problem.csproj.CopyComplete" />
-    <Content Include="obj\Debug\Machine Problem.csproj.CoreCompileInputs.cache" />
-    <Content Include="obj\Debug\Machine Problem.csprojAssemblyReference.cache" />
-    <Content Include="obj\Release\Machine Problem.csprojAssemblyReference.cache" />
     <None Include="packages.config" />
     <Content Include="master\User.Master" />
     <None Include="Properties\PublishProfiles\TKNSMachineProblem - Web Deploy.pubxml" />
@@ -2210,7 +2138,6 @@
     <Folder Include="Admin\Announcements\Photos\" />
     <Folder Include="Admin\FeaturedWorks\Photos\" />
     <Folder Include="Admin\NewsEvents\Photos\" />
-    <Folder Include="obj\Release\TempPE\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
