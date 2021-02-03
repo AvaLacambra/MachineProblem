@@ -2119,6 +2119,7 @@
     <None Include="libraries\boostrap\Scripts\jquery-3.0.0-vsdoc.js" />
     <None Include="packages.config" />
     <Content Include="master\User.Master" />
+    <None Include="Properties\PublishProfiles\TKNSMachineProblem - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

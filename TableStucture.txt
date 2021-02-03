@@ -1,12 +1,13 @@
+GO
+
 CREATE TABLE Student (
 	studentID INT IDENTITY(1,1) PRIMARY KEY,
 	firstName NVARCHAR(50) NOT NULL,
 	lastName NVARCHAR(50) NOT NULL,
 	middleI NVARCHAR(1),
-	gender NVARCHAR(10) CHECK (gender in ('Male','Female')) NOT NULL,
 	birthDate date NOT NULL,
 	birthPlace NVARCHAR(50) NOT NULL,
-	Religion NVARCHAR(30) NOT NULL,
+	Religion NVARCHAR(30),
 	nationality NVARCHAR(50) NOT NULL,
 	homeStreet NVARCHAR(100) NOT NULL,
 	homeCity NVARCHAR(50) NOT NULL,
@@ -14,27 +15,113 @@ CREATE TABLE Student (
 	homeZipCode NVARCHAR(4) CHECK (ISNUMERIC(homeZipCode) = 1 AND LEN(homeZipCode) = 4)
 );
 
+GO
+
 CREATE TABLE Guardian (
-	guardianID INT IDENTITY(1,1) PRIMARY KEY,
-	firstName NVARCHAR(50) NOT NULL,
-	lastName NVARCHAR(50) NOT NULL,
+	firstName NVARCHAR(50),
+	lastName NVARCHAR(50),
 	middleI NVARCHAR(1),
 	occupation NVARCHAR(50),
 	workStreet NVARCHAR(100),
 	workCity NVARCHAR(50),
 	workProvince NVARCHAR(50),
-	workZipCode NVARCHAR(4) CHECK (ISNUMERIC(workZipCode) = 1 AND LEN(workZipCode) = 4),
-	telNo NVARCHAR(11) CHECK (ISNUMERIC(telNo) = 1 AND LEN(telNo) = 10),
-	mobileNo NVARCHAR(11) CHECK (ISNUMERIC(mobileNo) = 1 AND LEN(mobileNo) = 11) NOT NULL,
-	officeNo NVARCHAR(11) CHECK (ISNUMERIC(officeNo) = 1 AND LEN(officeNo) = 11),
-	email NVARCHAR(50) NOT NULL,
-	relation NVARCHAR(20) NOT NULL CHECK(relation in ('Father','Mother','Guardian')) 
+	workZipCode NVARCHAR(4),
+	telNo NVARCHAR(11),
+	mobileNo NVARCHAR(11),
+	officeNo NVARCHAR(11),
+	email NVARCHAR(50),
+	relation NVARCHAR(20) CHECK(relation in ('Father','Mother','Guardian')),
+	studentID INT NOT NULL,
+	CONSTRAINT FK_guardian_studentID FOREIGN KEY(studentID) REFERENCES Student(studentID)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
 );
+
+GO
+
+CREATE TABLE BehavioralInformation (
+	behavioralID INT IDENTITY(1,1) PRIMARY KEY,
+	studentID INT NOT NULL,
+	consulted BIT DEFAULT 0,
+	diagnosis NVARCHAR(256),
+	interventionOrProgram NVARCHAR(256),
+	CONSTRAINT FK_behavioral_studentID FOREIGN KEY(studentID) REFERENCES Student(studentID)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+);
+
+GO
+
+CREATE TABLE MedicalInformation (
+	medicalID INT IDENTITY(1,1) PRIMARY KEY,
+	studentID INT NOT NULL,
+	docFirstName NVARCHAR(50),
+	docLastName NVARCHAR(50),
+	docMiddleI NVARCHAR(1),
+	docHospital NVARCHAR(50),
+	docContactNo NVARCHAR(11),
+	startDate DATE,
+	endDate DATE,
+	medicalFindings NVARCHAR(256),
+	medicalProblems NVARCHAR(256),
+	medication NVARCHAR(256),
+	CONSTRAINT FK_medical_studentID FOREIGN KEY(studentID) REFERENCES Student(studentID)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+);
+
+GO
+
+CREATE TABLE Immunization (
+	immunizationID INT IDENTITY(1,1) PRIMARY KEY,
+	DPT BIT DEFAULT 0,
+	chickenPox BIT DEFAULT 0,
+	influenza BIT DEFAULT 0,
+	hepatitis BIT DEFAULT 0,
+	polio BIT DEFAULT 0,
+	measles BIT DEFAULT 0,
+	bcg BIT DEFAULT 0,
+	others NVARCHAR(100),
+	medicalID INT not null,
+	CONSTRAINT FK_medicalID FOREIGN KEY(medicalID) REFERENCES MedicalInformation(medicalID)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+);
+
+GO
+
+CREATE TABLE Enrolled (
+	enrolledID INT IDENTITY(1,1) PRIMARY KEY,
+	studentID INT NOT NULL,
+	dateEnrolled date NOT NULL,
+	schoolYear NVARCHAR(15) NOT NULL,
+	yearLevel NVARCHAR(15) NOT NULL,
+	enrollmentStatus NVARCHAR(15) CHECK(enrollmentStatus IN ('Approved','Not Approved','Pending')),
+	CONSTRAINT FK_enrolled_studentID FOREIGN KEY(studentID) REFERENCES Student(studentID)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+);
+
+GO
+
+CREATE TABLE Inquiry(
+	inquiryID INT IDENTITY(1,1) PRIMARY KEY,
+	firstName NVARCHAR(50) NOT NULL,
+	lastName NVARCHAR(50) NOT NULL,
+	affiliation NVARCHAR(50),
+	contactNo NVARCHAR(11) NOT NULL,
+	email NVARCHAR(50) NOT NULL,
+	inquiryType NVARCHAR(1) NOT NULL,
+	comments NVARCHAR(256) NOT NULL
+);
+
+GO
 
 CREATE TABLE Payment (
 	paymentID INT IDENTITY(1,1) PRIMARY KEY,
 	paymentType NVARCHAR(50) NOT NULL CHECK(paymentType in ('Annual','Semi-annual','Monthly')),
-	reservationFee BIT DEFAULT 0 NOT NULL,
+	enrollmentFee money DEFAULT 0 NOT NULL,
+	reservationFee money DEFAULT 0 NOT NULL,
 	miscellaneuos BIT DEFAULT 0 NOT NULL,
 	payAug BIT DEFAULT 0 NOT NULL,
 	paySept BIT DEFAULT 0 NOT NULL,
@@ -44,66 +131,42 @@ CREATE TABLE Payment (
 	payFeb BIT DEFAULT 0 NOT NULL,
 	payMar BIT DEFAULT 0 NOT NULL,
 	payApr BIT DEFAULT 0 NOT NULL,
-	netTotalPaid money CHECK(netTotalPaid >=0) NOT NULL,
-	remainingBalance money CHECK(remainingBalance >=0) NOT NULL
-);
-
-CREATE TABLE Enrolled (
-	enrolledID INT IDENTITY(1,1) PRIMARY KEY,
-	studentID INT NOT NULL,
-	dateEnrolled date NOT NULL,
-	schoolYear NVARCHAR(15) NOT NULL,
-	yearLevel NVARCHAR(15) NOT NULL,
-	paymentID INT NOT NULL,
-	enrollmentStatus NVARCHAR(15) CHECK(enrollmentStatus IN ('Approved','Not Approved','Pending')),
-	CONSTRAINT FK_enrolledStudentID FOREIGN KEY(studentID) REFERENCES Student(studentID),
-	CONSTRAINT FK_enrolledPaymentID FOREIGN KEY(paymentID) REFERENCES Payment(paymentID)
+	netTotalPaid money CHECK(netTotalPaid >=0) NOT NULL DEFAULT 0,
+	remainingBalance money CHECK(remainingBalance >=0) NOT NULL DEFAULT 0,
+	enrolledID INT NOT NULL,
+	CONSTRAINT FK_payment_enrolledID FOREIGN KEY(enrolledID) REFERENCES Enrolled(enrolledID)
 	ON DELETE CASCADE
 	ON UPDATE CASCADE
 );
 
-CREATE TABLE BehavioralInformation (
-	behavioralID INT IDENTITY(1,1) PRIMARY KEY,
-	studentID INT NOT NULL,
-	consulted BIT DEFAULT 0,
-	diagnosis NVARCHAR(256),
-	interventionOrProgram NVARCHAR(256),
-	CONSTRAINT FK_behavioralStudentID FOREIGN KEY(studentID) REFERENCES Student(studentID)
+GO
+
+CREATE TABLE ProofOfPayment(
+	proofID INT IDENTITY(1,1) PRIMARY KEY,
+	status NVARCHAR(20) NOT NULL CHECK(proofID in ('Processed','Unprocessed')), 
+	studentLastName NVARCHAR(50) NOT NULL,
+	studentFirstName NVARCHAR(50) NOT NULL,
+	yearLevel NVARCHAR(3) NOT NULL,
+	parentLastName NVARCHAR(50) NOT NULL,
+	parentFirstName NVARCHAR(50) NOT NULL,
+	contactNo NVARCHAR(11) NOT NULL CHECK (ISNUMERIC(contactNo) = 1),
+	email NVARCHAR(50) NOT NULL,
+	notes NVARCHAR(256)
+);
+
+GO
+
+CREATE TABLE ProofOfPaymentPhotos (
+	photoID INT IDENTITY (1,1) PRIMARY KEY,
+	proofID INT NOT NULL,
+	photoName NVARCHAR(128) NOT NULL,
+	photoPath NVARCHAR(256) NOT NULL,
+	CONSTRAINT FK_proofID FOREIGN KEY(proofID) REFERENCES ProofOfPayment(proofID)
 	ON DELETE CASCADE
 	ON UPDATE CASCADE
 );
 
-CREATE TABLE MedicalInformation (
-	medicalID INT IDENTITY(1,1) PRIMARY KEY,
-	studentID INT NOT NULL,
-	docFirstName NVARCHAR(50),
-	docLastName NVARCHAR(50),
-	docMiddleI NVARCHAR(1),
-	docHospital NVARCHAR(50),
-	docContactNo NVARCHAR(11) CHECK (ISNUMERIC(docContactNo)=1 AND LEN(docContactNo)=11),
-	dateCovered DATE,
-	medicalFindings NVARCHAR(256),
-	medicalProblems NVARCHAR(256),
-	medication NVARCHAR(256),
-	CONSTRAINT FK_medicalStudentID FOREIGN KEY(studentID) REFERENCES Student(studentID)
-	ON DELETE CASCADE
-	ON UPDATE CASCADE
-);
-
-CREATE TABLE Immunization (
-	immunizationID INT IDENTITY(1,1) PRIMARY KEY,
-	immunizationType NVARCHAR(50)
-);
-
-CREATE TABLE StudentImmunization (
-	studImmunizationID INT IDENTITY(1,1) PRIMARY KEY,
-	medicalID INT NOT NULL,
-	immunizationID INT NOT NULL,
-	CONSTRAINT FK_studentMedicalID FOREIGN KEY(medicalID) REFERENCES MedicalInformation(medicalID),
-	CONSTRAINT FK_studentImmunizationID FOREIGN KEY(immunizationID) REFERENCES Immunization(immunizationID)
-	ON DELETE CASCADE
-	ON UPDATE CASCADE
-);
+GO
 
 CREATE TABLE Announcements (
 	announceID INT IDENTITY (1,1) PRIMARY KEY,
@@ -111,6 +174,8 @@ CREATE TABLE Announcements (
 	announceText NVARCHAR(4000) NOT NULL,
 	announceDatePosted DATE NOT NULL,
 );
+
+GO
 
 CREATE TABLE AnnouncementPhotos (
 	photoID INT IDENTITY (1,1) PRIMARY KEY,
@@ -122,6 +187,8 @@ CREATE TABLE AnnouncementPhotos (
 	ON UPDATE CASCADE
 );
 
+GO
+
 CREATE TABLE FeaturedWorks (
 	featuredWorkID INT IDENTITY (1,1) PRIMARY KEY,
 	featuredTitle NVARCHAR(150) NOT NULL,
@@ -129,6 +196,8 @@ CREATE TABLE FeaturedWorks (
 	featuredDatePosted DATE NOT NULL,
 
 );
+
+GO
 
 CREATE TABLE FeaturedWorkPhotos (
 	photoID INT IDENTITY (1,1) PRIMARY KEY,
@@ -140,12 +209,16 @@ CREATE TABLE FeaturedWorkPhotos (
 	ON UPDATE CASCADE
 );
 
+GO
+
 CREATE TABLE NewsEvents (
 	newsEventsID INT IDENTITY (1,1) PRIMARY KEY,
 	newsEventsTitle NVARCHAR(150) NOT NULL,
 	newsEventsDesc NVARCHAR(4000) NOT NULL,
 	newsEventsDatePosted DATE NOT NULL,
 );
+
+GO
 
 CREATE TABLE NewsEventsPhotos (
 	photoID INT IDENTITY (1,1) PRIMARY KEY,
