@@ -50,7 +50,7 @@
         <div class="card">
             <div class="row">
                 <div class="col-md-4">
-                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div id="carouselExampleControls<%= i%>" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <% int photoCounter = 0; %>
                             <% for (int j=0; j < featuredWorkPhotos.photoID.Count; j++) { %>
@@ -69,11 +69,11 @@
                             <% } %>
                         </div>
                         <% if (photoCounter > 1) {%> 
-                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <a class="carousel-control-prev" href="#carouselExampleControls<%= i%>" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <a class="carousel-control-next" href="#carouselExampleControls<%= i%>" role="button" data-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>

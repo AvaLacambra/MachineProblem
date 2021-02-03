@@ -41,14 +41,14 @@
         </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container col-sm-9 col-md-9 col-lg-8 col-xl-6" style="margin-top:30px; margin-bottom:70px;">
+    <div class="container col-sm-8 col-md-8 col-lg-7 col-xl-5" style="margin-top:30px; margin-bottom:70px;">
         <div class="row justify-content-center">
             <h1>Announcements</h1>
         </div>
         <hr />
         <% for (int i=0; i < announcements.announceID.Count; i++) { %>
-            <div class="card">
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="card mb-5">
+                <div id="carouselExampleControls<%= i%>" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <% int photoCounter = 0; %>
                         <% for (int j=0; j < announcementPhotos.photoID.Count; j++) { %>
@@ -67,11 +67,11 @@
                         <% } %>
                     </div>
                     <% if (photoCounter > 1) {%> 
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <a class="carousel-control-prev" href="#carouselExampleControls<%= i%>" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <a class="carousel-control-next" href="#carouselExampleControls<%= i%>" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
@@ -79,7 +79,7 @@
                 </div>
                 <hr />
                 <div class="row justify-content-center">
-                    <h2 class="card-title mt-2 ml-2"><%= announcements.announceTitle[i] %></h2>
+                    <h4 class="card-title mt-2 ml-2"><%= announcements.announceTitle[i] %></h4>
                 </div>
                 <div class="row justify-content-center">
                     <small class=" mt-2 ml-2">Date Posted : <%= String.Format("{0:dd/MM/yyyy}", announcements.announceDatePosted[i]) %></small>
