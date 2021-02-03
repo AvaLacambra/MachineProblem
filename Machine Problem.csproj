@@ -2119,6 +2119,7 @@
     <None Include="libraries\boostrap\Scripts\jquery-3.0.0-vsdoc.js" />
     <None Include="packages.config" />
     <Content Include="master\User.Master" />
+    <None Include="Properties\PublishProfiles\TKNS - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2137,7 +2138,6 @@
     <Folder Include="Admin\Announcements\Photos\" />
     <Folder Include="Admin\FeaturedWorks\Photos\" />
     <Folder Include="Admin\NewsEvents\Photos\" />
-    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
