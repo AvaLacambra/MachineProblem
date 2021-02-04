@@ -15,6 +15,7 @@ CREATE TABLE Employee (
 	employeeID INT IDENTITY(1,1) PRIMARY KEY,
 	firstName NVARCHAR(50) NOT NULL,
 	lastName NVARCHAR(50) NOT NULL,
+	gender NVARCHAR(1) CHECK (gender in ('M', 'F')) NOT NULL,
 	middleI NVARCHAR(1),
 	email NVARCHAR(50) NOT NULL UNIQUE,
 	dateEmployed date NOT NULL,
