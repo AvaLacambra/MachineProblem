@@ -5,6 +5,7 @@ CREATE TABLE Student (
 	firstName NVARCHAR(50) NOT NULL,
 	lastName NVARCHAR(50) NOT NULL,
 	middleI NVARCHAR(1),
+	gender NVARCHAR(1) CHECK (gender in ('M', 'F')) NOT NULL;
 	birthDate date NOT NULL,
 	birthPlace NVARCHAR(50) NOT NULL,
 	Religion NVARCHAR(30),

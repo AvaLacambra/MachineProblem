@@ -82,6 +82,7 @@ namespace Machine_Problem.master
                 command.Parameters.AddWithValue("announceTitle", txtAnnounceTitleEdit.Text);
                 command.Parameters.AddWithValue("announceText", txtAnnounceTextEdit.Text);
                 command.Parameters.AddWithValue("announceID", Session["EditAnnounceID"].ToString());
+                command.ExecuteNonQuery();
 
                 return Session["EditAnnounceID"].ToString();
             }
