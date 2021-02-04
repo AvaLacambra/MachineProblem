@@ -92,10 +92,12 @@
     <Content Include="assets\dashboard\js\script.min.js" />
     <Content Include="assets\home\amenities.jpg" />
     <Content Include="assets\navbar\logo.png" />
+    <Content Include="css\ViewPost.css" />
     <Content Include="js\chart.min.js" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\Posts.js" />
     <Content Include="js\script.min.js" />
+    <Content Include="js\ViewPosts.js" />
     <Content Include="libraries\boostrap\Content\bootstrap-grid.css" />
     <Content Include="libraries\boostrap\Content\bootstrap-grid.css.map" />
     <Content Include="libraries\boostrap\Content\bootstrap-grid.min.css" />

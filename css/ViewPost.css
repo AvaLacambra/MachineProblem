@@ -1,0 +1,11 @@
+﻿pre {
+    white-space: pre-wrap;
+}
+
+.more {
+    margin: 10px;
+}
+
+.morecontent span {
+    display: none;
+}
