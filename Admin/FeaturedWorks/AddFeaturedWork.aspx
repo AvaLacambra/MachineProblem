@@ -1,15 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="../../master/Admin.Master" AutoEventWireup="true" CodeBehind="AddFeaturedWork.aspx.cs" Inherits="Machine_Problem.master.WebForm13" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script>
-        $(document).ready(function () {
-            $('#ContentPlaceHolder1_filePhoto').change(function () {
-                $("#frames").html('');
-                for (var i = 0; i < $(this)[0].files.length; i++) {
-                    $("#frames").append('<img src="' + window.URL.createObjectURL(this.files[i]) + '"width="200px" height="200px" style="border:8px solid transparent" alt="Not an image, please change."/>');
-                }
-            });
-        });
-    </script>
+    <script src="../../js/Posts.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container col-sm-9 col-md-9 col-lg-8 col-xl-6" style="margin-top:30px; margin-bottom:70px;">

@@ -15,15 +15,6 @@ namespace Machine_Problem.master
     {
 
         /// <summary>
-        /// announcementsView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label announcementsView;
-
-        /// <summary>
         /// btnAddAnnouncement control.
         /// </summary>
         /// <remarks>

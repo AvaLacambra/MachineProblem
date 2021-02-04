@@ -94,6 +94,7 @@
     <Content Include="assets\navbar\logo.png" />
     <Content Include="js\chart.min.js" />
     <Content Include="js\jquery.min.js" />
+    <Content Include="js\Posts.js" />
     <Content Include="js\script.min.js" />
     <Content Include="libraries\boostrap\Content\bootstrap-grid.css" />
     <Content Include="libraries\boostrap\Content\bootstrap-grid.css.map" />

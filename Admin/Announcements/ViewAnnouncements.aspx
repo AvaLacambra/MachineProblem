@@ -1,17 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="../../master/Admin.Master" AutoEventWireup="true" CodeBehind="ViewAnnouncements.aspx.cs" Inherits="Machine_Problem.master.WebForm11" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style type="text/css">
-        .auto-style1 {
-            font-size: xx-large;
-        }
-    </style>
-
-    <!-- Data Tables CSS -->
-    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
-
-    <!-- jQuery Data Tables CDN -->
-    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js" type="text/javascript" charset="utf8"></script>
-
     <script type="text/javascript">
         $(function () {
             $(".announcementsView").DataTable();
@@ -21,11 +9,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container" style="margin-top:30px; margin-bottom:70px;">
         <div class ="jumbotron">
-            <div class="text-center">
-                <strong>
-                <asp:Label ID="announcementsView" runat="server" Text="View Announcements" CssClass="auto-style1"></asp:Label>
-                </strong>
-                <hr />
+            <div class="row justify-content-center">
+                <h1>View Announcements</h1>
+            </div>
+            <hr />
+            <div class="row justify-content-center">
                 <asp:Button ID="btnAddAnnouncement" runat="server" Text="Add Announcement" class="btn btn-primary" OnClick="btnAddAnnouncement_Click"/>
             </div>
             <div class="container table-responsive">
